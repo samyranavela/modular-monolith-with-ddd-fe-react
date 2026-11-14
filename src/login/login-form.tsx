@@ -16,7 +16,7 @@ export function LoginForm(props: LoginFormProps) {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
 
-        var formdata = new FormData();
+        var formdata = new URLSearchParams();
         formdata.append("client_id", "ro.client");
         formdata.append("grant_type", "password");
         formdata.append("username", login);

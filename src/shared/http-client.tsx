@@ -23,7 +23,7 @@ export class HttpClient {
         }
     }
 
-    public static async postForm<TResult>(resource: string, body: FormData): Promise<TResult> {
+    public static async postForm<TResult>(resource: string, body: FormData | URLSearchParams): Promise<TResult> {
 
         const headers = HttpClient.GetHeaders(null);
         var requestOptions: RequestInit = {

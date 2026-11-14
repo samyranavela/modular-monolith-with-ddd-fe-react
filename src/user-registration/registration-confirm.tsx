@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     useParams
-} from "react-router-dom";
+} from "react-router";
 import { HttpClient } from '../shared/http-client';
 
-interface RegistrationConfirmUrlParams {
-    registrationId: string;
-}
-
 export function RegistrationConfirm() {
-    const { registrationId } = useParams<RegistrationConfirmUrlParams>();
+    const { registrationId } = useParams();
     const [isConfirmSuccessful, setIsConfirmSuccessful] = useState(false);
 
     useEffect(() => {

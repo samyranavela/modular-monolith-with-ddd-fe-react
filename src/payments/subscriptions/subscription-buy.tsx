@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Country } from '../../shared/country';
 import { SubscriptionType } from './subscriptionType';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { HttpClient } from '../../shared/http-client';
 
 interface BuySubscriptionRequest {
@@ -44,7 +44,7 @@ export function SubscriptionBuy() {
         getPrice();
     }, []);
 
-    let history = useHistory();
+    const navigate = useNavigate();
 
     function loadCountries() {
         HttpClient.get<Array<Country>>('api/meetings/countries')
@@ -69,7 +69,7 @@ export function SubscriptionBuy() {
 
         HttpClient.post<Response>('api/payments/subscriptions', JSON.stringify(request))
             .then((response) => response.json() as unknown as string)
-            .then((paymentId) => history.push(`/subscription/payment-status?paymentId=${paymentId}`))
+            .then((paymentId) => navigate(`/subscription/payment-status?paymentId=${paymentId}`))
             .catch(_ => { });
 
         event.preventDefault();

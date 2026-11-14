@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HttpClient } from '../shared/http-client';
 
 interface Email {

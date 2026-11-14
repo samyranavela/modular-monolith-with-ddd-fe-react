@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { LoginControl } from './login/login-control';
 import {
     BrowserRouter as Router,
+    Routes,
     Route,
     Link
-} from 'react-router-dom';
+} from 'react-router';
 import { MyMeetingsGroups } from './meetings/my-meeting-groups/my-meetings-groups';
 import { CreateMeetingGroup } from './meetings/my-meeting-groups/create-meeting-group';
 import { AdministrationMeetingGroupProposalsList } from './administration/MeetingGroupProposals/meeting-group-proposals-list';
@@ -97,21 +98,23 @@ function App() {
 
                         </div>
 
-                        <Route exact path="/my-meeting-groups/" component={MyMeetingsGroups} />
-                        <Route exact path="/meeting-groups/" component={AllMeetingGrups} />
-                        <Route exact path="/meeting-groups-create/" component={CreateMeetingGroup} />
-                        <Route exact path="/meeting-groups/:meetingGroupId/meetings/create" component={CreateMeeting} />
-                        <Route exact path="/meeting-groups/:meetingGroupId" component={MeetingGroupDetails} />
-                        <Route exact path="/subscription" component={SubscriptionDetails} />
-                        <Route exact path="/subscription/buy" component={SubscriptionBuy} />
-                        <Route exact path="/subscription/payment-status" component={SubscriptionPaymentStatus} />
-                        <Route exact path="/subscription/payment-success" component={SubscriptionPaymentSuccess} />
-                        <Route exact path="/administration/meetingGroupProposals" component={AdministrationMeetingGroupProposalsList} />
-                        <Route exact path="/my-meetings" component={MyMeetings} />
-                        <Route exact path="/meetings/:meetingId" component={MeetingDetails} />
-                        <Route exact path="/register" component={UserRegistrationForm} />
-                        <Route exact path="/emails" component={AllEmailsList} />
-                        <Route exact path="/registration-confirm/:registrationId" component={RegistrationConfirm} />
+                        <Routes>
+                        <Route path="/my-meeting-groups" element={<MyMeetingsGroups/>} />
+                        <Route path="/meeting-groups" element={<AllMeetingGrups/>} />
+                        <Route path="/meeting-groups-create" element={<CreateMeetingGroup/>} />
+                        <Route path="/meeting-groups/:meetingGroupId/meetings/create" element={<CreateMeeting/>} />
+                        <Route path="/meeting-groups/:meetingGroupId" element={<MeetingGroupDetails/>} />
+                        <Route path="/subscription" element={<SubscriptionDetails/>} />
+                        <Route path="/subscription/buy" element={<SubscriptionBuy/>} />
+                        <Route path="/subscription/payment-status" element={<SubscriptionPaymentStatus/>} />
+                        <Route path="/subscription/payment-success" element={<SubscriptionPaymentSuccess/>} />
+                        <Route path="/administration/meetingGroupProposals" element={<AdministrationMeetingGroupProposalsList/>} />
+                        <Route path="/my-meetings" element={<MyMeetings/>} />
+                        <Route path="/meetings/:meetingId" element={<MeetingDetails/>} />
+                        <Route path="/register" element={<UserRegistrationForm/>} />
+                        <Route path="/emails" element={<AllEmailsList/>} />
+                        <Route path="/registration-confirm/:registrationId" element={<RegistrationConfirm/>} />
+                        </Routes>
                     </div>
                 </Router>
 

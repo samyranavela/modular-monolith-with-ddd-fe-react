@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HttpClient } from '../../shared/http-client';
 
 interface AdministrationMeetingGroupProposal {
@@ -52,7 +52,7 @@ export function AdministrationMeetingGroupProposalsList() {
                 <td>{item.description} </td>
                 <td>{item.locationCity} </td>
                 <td>{item.locationCountryCode} </td>
-                <td>{item.proposalDate} </td>
+                <td>{String(item.proposalDate)} </td>
                 <td>{item.statusCode} </td>
                 <td>{item.decisionCode} </td>
                 <td>{item.decisionRejectReason} </td>

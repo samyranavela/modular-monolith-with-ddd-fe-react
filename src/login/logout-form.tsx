@@ -1,5 +1,4 @@
 import { FormEvent } from "react";
-import React from "react";
 import { AuthenticationService } from "./authentication/authentication-service";
 
 type LogOutFormProps = {

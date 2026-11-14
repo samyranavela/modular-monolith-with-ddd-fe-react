@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     useParams
-} from "react-router-dom";
+} from "react-router";
 import { HttpClient } from '../shared/http-client';
 import { MeetingAttendeeListProperties, MeetingAttendeesList } from './meeting-attendees-list';
 
@@ -24,12 +24,8 @@ interface MeetingDetails {
     eventFeeCurrency: string
 }
 
-interface MeetingDetailsUrlParams {
-    meetingId: string;
-}
-
 export function MeetingDetails() {
-    const { meetingId } = useParams<MeetingDetailsUrlParams>();
+    const { meetingId } = useParams();
 
     const [meetingDetails, setMeetingDetails] = useState<MeetingDetails | null>(null);
 
@@ -44,7 +40,7 @@ export function MeetingDetails() {
 
     function getMeetingAttendeesListProperties(): MeetingAttendeeListProperties {
         return {
-            meetingId: meetingId
+            meetingId: meetingId ?? ''
         }
     }
 
@@ -54,7 +50,7 @@ export function MeetingDetails() {
                 <div>
                     <div>ID: {meetingDetails.id} </div>
                     <div>Title: {meetingDetails.title} </div>
-                    <div>Date: {meetingDetails.termStartDate} - {meetingDetails.termEndDate} </div>
+                    <div>Date: {String(meetingDetails.termStartDate)} - {String(meetingDetails.termEndDate)} </div>
                     <div>Description: {meetingDetails.description} </div>
                     <div>Location name: {meetingDetails.locationName} </div>
                     <div>Location address: {meetingDetails.locationAddress} </div>

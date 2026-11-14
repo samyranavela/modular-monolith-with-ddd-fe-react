@@ -1,8 +1,7 @@
 import { FormEvent, useState } from 'react';
-import React from 'react';
 import {
     useParams
-} from 'react-router-dom';
+} from 'react-router';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { HttpClient } from '../shared/http-client';
@@ -26,13 +25,9 @@ interface CreateMeetingRequest {
     hostMemberIds: string[]
 }
 
-interface CreateMeetingUrlParams {
-    meetingGroupId: string;
-  }
-
 export function CreateMeeting() {
 
-    const { meetingGroupId } = useParams<CreateMeetingUrlParams>();
+    const { meetingGroupId } = useParams();
 
     const [title, setTitle] = useState('');
     const [termStartDate, setTermStartDate] = useState<any>(new Date());
@@ -51,7 +46,7 @@ export function CreateMeeting() {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         const request: CreateMeetingRequest = {
-            meetingGroupId: meetingGroupId,
+            meetingGroupId: meetingGroupId ?? '',
             description: description,
             eventFeeCurrency: '',
             guestsLimit: guestsLimit,

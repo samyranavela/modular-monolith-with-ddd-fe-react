@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HttpClient } from '../../shared/http-client';
 
 interface MeetingGroupProposal {
@@ -42,7 +42,7 @@ export function MyMeetingGroupProposalsList() {
                 <td>{item.description} </td>
                 <td>{item.locationCity} </td>
                 <td>{item.locationCountryCode} </td>
-                <td>{item.proposalDate} </td>
+                <td>{String(item.proposalDate)} </td>
                 <td>{item.statusCode} </td>
                 </tbody>
                  )}

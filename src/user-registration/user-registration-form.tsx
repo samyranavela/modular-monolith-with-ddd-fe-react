@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import React from "react";
 import { HttpClient } from "../shared/http-client";
 
 interface RegisterNewUserRequest {

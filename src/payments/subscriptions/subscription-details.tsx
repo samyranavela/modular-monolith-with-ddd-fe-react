@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Link
-} from 'react-router-dom';
+} from 'react-router';
 import { HttpClient } from '../../shared/http-client';
 
 interface SubscriptionDetails {
@@ -32,7 +32,7 @@ export function SubscriptionDetails() {
                     <div>ID: {subscriptionDetails.subscriptionId} </div>
                     <div>Period: {subscriptionDetails.period} </div>
                     <div>Status: {subscriptionDetails.status} </div>
-                    <div>Expire: {subscriptionDetails.expirationDate} </div>
+                    <div>Expire: {String(subscriptionDetails.expirationDate)} </div>
                 </div>
             }
 

@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import React from "react";
 import { AuthenticationResult } from "./authentication/authenticationResult";
 import { AuthenticationService } from "./authentication/authentication-service";
 import { HttpClient } from "../shared/http-client";

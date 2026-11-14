@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     useParams,
-    useHistory
-} from "react-router-dom";
+    useNavigate
+} from "react-router";
 import { HttpClient } from '../../shared/http-client';
 
 interface MeetingGroupDetails {
@@ -14,12 +14,8 @@ interface MeetingGroupDetails {
     membersCount: number
 }
 
-interface MeetingGroupDetailsUrlParams {
-    meetingGroupId: string;
-}
-
 export function MeetingGroupDetails() {
-    const { meetingGroupId } = useParams<MeetingGroupDetailsUrlParams>();
+    const { meetingGroupId } = useParams();
 
     console.log(meetingGroupId);
 
@@ -29,7 +25,7 @@ export function MeetingGroupDetails() {
         loadDetails();
     }, []);
 
-    let history = useHistory();
+    const navigate = useNavigate();
 
     function loadDetails() {
         HttpClient.get<MeetingGroupDetails>(`api/meetings/meetingGroups/${meetingGroupId}`)
@@ -37,7 +33,7 @@ export function MeetingGroupDetails() {
     }
 
     function onCreateNewMeeting() {
-        history.push(`/meeting-groups/${meetingGroupId}/meetings/create`);
+        navigate(`/meeting-groups/${meetingGroupId}/meetings/create`);
     }
 
     return (

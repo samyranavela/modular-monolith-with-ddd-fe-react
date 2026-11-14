@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-    useHistory
-} from "react-router-dom";
+    useNavigate
+} from "react-router";
 import { HttpClient } from '../../shared/http-client';
 
 interface MeetingGroup {
@@ -21,7 +21,7 @@ export function AllMeetingGrups() {
         loadMeetingGroups();
     }, []);
 
-    let history = useHistory();
+    const navigate = useNavigate();
 
     function loadMeetingGroups() {
         HttpClient.get<Array<MeetingGroup>>('api/meetings/meetingGroups/all')
@@ -29,7 +29,7 @@ export function AllMeetingGrups() {
     }
 
     function onClick(meetingGroupId: string) {
-        history.push(`/meeting-groups/${meetingGroupId}`);
+        navigate(`/meeting-groups/${meetingGroupId}`);
     }
 
     return (

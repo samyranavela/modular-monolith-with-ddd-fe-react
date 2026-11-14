@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AuthenticationService } from '../login/authentication/authentication-service';
 import { HttpClient } from '../shared/http-client';
 

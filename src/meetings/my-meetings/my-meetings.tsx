@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-    useHistory
-} from "react-router-dom";
+    useNavigate
+} from "react-router";
 import { HttpClient } from '../../shared/http-client';
 
 interface MemberMeeting {
     meetingId: string,
     title: string,
     locationAddress: string,
-    locationCity: Date,
+    locationCity: string,
     locationPostalCode: Date,
     termStartDate: string,
     termEndDate: string,
@@ -23,7 +23,7 @@ export function MyMeetings() {
         loadMeetings();
     }, []);
 
-    let history = useHistory();
+    const navigate = useNavigate();
 
     function loadMeetings() {
         HttpClient.get<Array<MemberMeeting>>('api/meetings/meetings')
@@ -32,7 +32,7 @@ export function MyMeetings() {
     }
 
     function onClick(meetingId: string) {
-        history.push(`/meetings/${meetingId}`);
+        navigate(`/meetings/${meetingId}`);
     }
 
     return (

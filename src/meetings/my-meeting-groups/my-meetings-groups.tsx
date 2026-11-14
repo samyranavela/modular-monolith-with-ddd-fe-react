@@ -1,9 +1,8 @@
 import {
     Link
-} from 'react-router-dom';
+} from 'react-router';
 import { MyMeetingGroupProposalsList } from './my-meeting-group-proposals-list';
 import { MyMeetingGroupsList } from './my-meeting-groups-list';
-import React from 'react';
 
 export function MyMeetingsGroups() {
 

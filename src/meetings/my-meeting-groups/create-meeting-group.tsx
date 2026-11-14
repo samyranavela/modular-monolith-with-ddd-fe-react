@@ -1,5 +1,4 @@
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
-import React from 'react';
 import { HttpClient } from '../../shared/http-client';
 
 export default interface ProposeMeetingGroupRequest {
